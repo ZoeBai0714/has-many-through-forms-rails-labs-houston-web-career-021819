@@ -19,7 +19,7 @@ describe 'Posts', type: 'feature' do
     it 'can create a post with a previously created category' do
       check('Cool')
       click_button('Create Post')
-      expect(page).to have_content('Cool')
+      expect(page).to have_content('Cool') 
     end
 
     it 'can create a post with a brand new category' do

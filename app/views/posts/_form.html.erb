@@ -1,1 +1,17 @@
+<h1>Create a New Post</h1>
+<%= form_for post do |f| %>     
+<%= f.label "Title" %><br>
+<%= f.text_field :title %><br>
+<%= f.label "Content" %><br>
+<%= f.text_area :content %><br>
+<%= f.label "Choose a category" %>
+<%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br> <!-- Post can access category through join table post_categories, thus we have category_id-->
+
+<%= f.label "or Create new categories" %><br>
+<%= f.fields_for :categories, post.categories.build do |pc| %>  <!-- post[post_attributes][0][name] , this is where we connect to def categories_attribute=(category_attributes) setter-->
+<%= pc.label "category"%><br>
+<%= pc.text_field :name %><br>
+<% end %>
+<%= f.submit "Create Post"%>
+<% end %>
 
